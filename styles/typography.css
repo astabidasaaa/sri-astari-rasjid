@@ -33,6 +33,7 @@ h6:not(:first-child) {
   @apply mt-8;
 }
 
+ul,
 p,
 .sub-p {
   @apply mb-4 text-justify whitespace-pre-wrap;
@@ -62,12 +63,13 @@ h5 {
 h6 {
   font-size: 16px;
 }
+li,
 p {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .sub-p {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 @media (min-width: 768px) {
@@ -93,8 +95,43 @@ p {
     font-size: 24px;
   }
   h6 {
-    font-size: 22px;
+    font-size: 20px;
   }
+  li,
+  p {
+    font-size: 16px;
+  }
+  .sub-p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .display-1 {
+    font-size: 54px;
+  }
+  .display-2 {
+    font-size: 48px;
+  }
+  h1 {
+    font-size: 42px;
+  }
+  h2 {
+    font-size: 38px;
+  }
+  h3 {
+    font-size: 32px;
+  }
+  h4 {
+    font-size: 26px;
+  }
+  h5 {
+    font-size: 24px;
+  }
+  h6 {
+    font-size: 20px;
+  }
+  li,
   p {
     font-size: 18px;
   }
@@ -103,7 +140,7 @@ p {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .display-1 {
     font-size: 60px;
   }
@@ -128,6 +165,7 @@ p {
   h6 {
     font-size: 24px;
   }
+  li,
   p {
     font-size: 20px;
   }
@@ -145,7 +183,6 @@ a {
   text-decoration: none;
 }
 
-nav a:hover,
-nav button:hover {
-  @apply text-black;
-}
+/* .lucette {
+  @apply font-lucette;
+} */

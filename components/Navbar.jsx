@@ -8,28 +8,22 @@ import MenuContext from "./MenuContext";
 
 const Navbar = () => {
   return (
-    <header className={`fixed top-0 right-0 left-0 z-50 bg-white`}>
-      <div
-        className={`px-4 md:px-12 lg:px-24 xl:px-40 transition-all duration-500`}
-      >
-        <nav
-          className={`h-20 md:h-40 lg:h-48 flex flex-row justify-between items-center`}
-        >
-          {/* <NavbarLogo /> */}
+    <header className="header">
+      <div className="nav_container">
+        <nav className="nav">
           <Link href="/" legacyBehavior>
             <a>
               <Image
                 id="logo-bw"
-                src="/logo-bw.png"
+                src="/logo-black.png"
                 alt="Logo Kemdikbud"
                 width={1237}
                 height={360}
-                className="w-36 md:w-56 lg:w-72 object-contain object-center"
+                className="nav_logo"
               />
             </a>
           </Link>
-
-          <Menu />
+          <Menu where="notIndex" />
           <NavMobile />
         </nav>
       </div>
@@ -39,7 +33,7 @@ const Navbar = () => {
 
 export default Navbar;
 
-const Menu = () => {
+export const Menu = ({ where }) => {
   const [subMenu, setSubMenu] = useState("");
 
   const toggleSubMenu = (title) => {
@@ -51,18 +45,18 @@ const Menu = () => {
   return (
     <div className="hidden lg:flex flex-row justify-center items-center">
       <div
-        className={`flex flex-row lg:gap-12 xl:gap-32 text-black/40 text-xl ${cohaerentia.variable} font-cohaerentia`}
+        className={`flex flex-row lg:gap-8 xl:gap-28 ${
+          where === "notIndex" ? "text-black/40" : "text-white/70 ml-[-24px]"
+        } text-2xl ${cohaerentia.variable} font-cohaerentia`}
       >
         <div
           onMouseEnter={() => toggleSubMenu("artworks")}
           onMouseLeave={() => toggleSubMenu("")}
           className="relative"
         >
-          <button className="p-1 flex flex-row justify-center items-center gap-1">
-            Artworks
-          </button>
+          <button className="menu_btn">Artworks</button>
           {subMenu === "artworks" && (
-            <SubMenu>
+            <SubMenu where={where}>
               <Link href="/artworks/painting">Painting</Link>
               <Link href="/artworks/sculpture">Sculpture</Link>
               <Link href="/artworks/installation">Installation</Link>
@@ -77,14 +71,12 @@ const Menu = () => {
           onMouseLeave={() => toggleSubMenu("")}
           className="relative"
         >
-          <button className="p-1 flex flex-row justify-center items-center gap-1">
-            Biography
-          </button>
+          <button className="menu_btn">Biography</button>
           {subMenu === "biography" && (
-            <SubMenu>
+            <SubMenu where={where}>
               <Link href="/biography/profile">Profile</Link>
-              <Link href="/biography/solo-exhibition">Solo Exhibition</Link>
-              <Link href="/biography/group-exhibition">Group Exhibition</Link>
+              <Link href="/biography/solo-exhibitions">Solo Exhibition</Link>
+              <Link href="/biography/group-exhibitions">Group Exhibition</Link>
             </SubMenu>
           )}
         </div>
@@ -93,11 +85,9 @@ const Menu = () => {
           onMouseLeave={() => toggleSubMenu("")}
           className="relative"
         >
-          <button className="p-1 flex flex-row justify-center items-center gap-1">
-            Publications
-          </button>
+          <button className="menu_btn">Publications</button>
           {subMenu === "publications" && (
-            <SubMenu>
+            <SubMenu where={where}>
               <Link href="/publications/catalogues">Catalogues</Link>
               <Link href="/publications/articles">Articles</Link>
               <Link href="/publications/books">Books</Link>
@@ -110,30 +100,48 @@ const Menu = () => {
   );
 };
 
-const SubMenu = ({ children }) => {
+export const SubMenu = ({ where, children }) => {
   return (
-    <div className="absolute right-0 flex flex-col justify-start items-end gap-3 bg-white p-6 z-40 drop-shadow-xl rounded w-56">
+    <div
+      className={`absolute ${
+        where === "notIndex"
+          ? "right-0 items-end bg-white"
+          : "left-0 items-start bg-gradient-to-t from-white/20 from-80% to-white/0"
+      } flex flex-col justify-start gap-1 p-6 z-40 drop-shadow-xl rounded w-64`}
+    >
       {children}
     </div>
   );
 };
 
-const NavMobile = () => {
+export const NavMobile = () => {
   const [isOpen, setNav] = useContext(MenuContext);
 
   const toggleNav = () => {
     setNav(!!isOpen);
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("touch-none");
+    }
+
+    // if (!isOpen) {
+    return () => document.body.classList.remove("touch-none");
+    // }
+  }, [isOpen]);
+
   return (
     <div className="flex lg:hidden">
       <button className="text-3xl" onClick={toggleNav}>
-        {isOpen ? (
-          <RxCross1 key="menu-close" />
-        ) : (
-          <RxHamburgerMenu key="menu-open" />
-        )}
+        <RxHamburgerMenu key="menu-open" />
       </button>
     </div>
   );
 };
+
+{
+  /* <button className="text-3xl" onClick={toggleNav}>
+  {isOpen ? <RxCross1 key="menu-close" /> : <RxHamburgerMenu key="menu-open" />}
+</button>; */
+}

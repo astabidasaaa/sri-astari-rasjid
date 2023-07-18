@@ -13,6 +13,30 @@ body {
 body {
   background-color: #ffffff;
   min-height: 100vh;
+  position: relative;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #93342633;
+  border-radius: 999px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #93342680;
+  border-radius: 999px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #933426;
 }
 
 a {
@@ -67,23 +91,117 @@ a {
   }
 } */
 
-.main_container {
-  @apply relative pt-24 px-4 pb-6 sm:px-8 sm:pb-8 md:pt-32 lg:pt-36 lg:px-10 lg:pb-10 xl:px-32 w-full h-full flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-4 lg:gap-0
-  /* @apply relative p-4 pb-6 sm:p-8 lg:p-10 xl:px-36 w-full h-full flex flex-row justify-start items-start gap-16 lg:gap-24 xl:gap-40; */;
+.header {
+  @apply fixed top-0 right-0 left-0 z-40 bg-white;
 }
 
-.second_container {
-  @apply relative p-4 sm:p-8 lg:p-10 xl:px-32 w-full h-full flex flex-col justify-center lg:justify-between items-start gap-4 lg:gap-0;
+.nav_container {
+  @apply px-4 md:px-12 lg:px-24 xl:px-40 transition-all duration-500;
+}
+
+.nav {
+  @apply h-20 md:h-40 lg:h-48 flex flex-row justify-between items-center;
+}
+
+.nav_logo {
+  @apply w-36 md:w-56 lg:w-72 object-contain object-center;
+}
+
+.mobile_menu_container {
+  @apply flex flex-col justify-start items-end relative w-full;
+}
+
+.mobile_menu_container button,
+.mobile_menu_container a {
+  text-shadow: 1px 4px 4px #00000040;
+}
+
+nav a:hover,
+nav button:hover {
+  @apply text-black;
+}
+
+.menu_btn {
+  @apply px-6 py-2 flex flex-row justify-center items-center gap-1;
+}
+
+.footer {
+  @apply absolute bottom-0 w-full bg-gradient-to-t from-[#933426]/90 via-[#933426]/50 via-40% lg:bg-none py-12;
+}
+
+.footer_container {
+  @apply px-12 lg:px-24 xl:px-40 transition-all duration-500;
+}
+
+.index_outer_container {
+  @apply hidden lg:block w-7/12 min-h-screen absolute left-0 top-0 bottom-0 bg-gradient-to-r from-[#933426] from-5% via-[#933426]/75 via-50%;
+}
+
+.index_inner_container {
+  @apply h-full flex flex-col items-start justify-between px-4 md:px-8 lg:px-20 xl:px-36 py-20 text-white;
+}
+
+.index_content {
+  @apply grow flex flex-col justify-center items-start gap-8;
+}
+
+.index_content a:hover,
+.index_content button:hover {
+  @apply text-white;
+}
+
+.main_outer_container {
+  @apply flex min-h-screen flex-col items-start justify-start px-4 md:px-12 lg:px-24 xl:px-40 pt-28 md:pt-40 lg:pt-56 pb-52 lg:pb-40;
+}
+
+.main_inner_container {
+  @apply relative w-full h-full flex flex-col justify-start items-center lg:items-start;
 }
 
 .main_content {
   @apply max-w-lg 2xl:max-w-2xl bg-transparent;
 }
 
-p {
-  @apply text-sm;
+.exhibitions_title {
+  @apply w-full text-[#00000066] lg:text-black;
 }
 
+.exhibitions_outer_container {
+  @apply w-full sm:overflow-x-scroll;
+}
+
+.exhibitions_inner_container {
+  @apply flex flex-col sm:flex-row justify-start items-start gap-12 w-full sm:w-max sm:pb-4;
+}
+
+.exhibitions_item_container {
+  @apply flex flex-col justify-start items-start w-full sm:w-[328px];
+}
+
+.exhibitions_item_image {
+  @apply object-cover object-center w-full h-[262px];
+}
+
+.catalogues_container {
+  @apply w-full flex flex-col lg:flex-row flex-wrap justify-between items-center lg:items-start gap-24 lg:gap-8 xl:gap-16;
+}
+
+.catalogues_item_container {
+  @apply basis-full lg:basis-[48%] xl:basis-[45%] flex flex-col lg:flex-row justify-start items-center lg:items-end gap-4 lg:gap-10 xl:gap-16 w-max;
+}
+
+.catalogues_item_image {
+  @apply object-cover object-center w-[283px] lg:w-[212px] xl:w-[283px] h-[400px] lg:h-[300px] xl:h-[400px];
+}
+
+.catalogues_item_description {
+  @apply flex flex-col justify-start items-center lg:items-start;
+}
+
+/* p {
+  @apply text-sm;
+} */
+/* 
 .img_container {
   @apply relative flex justify-center items-center w-full max-w-3xl h-full float-right lg:mr-[-6rem];
 }
@@ -103,4 +221,26 @@ p {
   max-height: 660px !important;
   position: relative !important;
   height: unset !important;
+} */
+
+/* width */
+.profile_content::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+.profile_content::-webkit-scrollbar-track {
+  background: #93342633;
+  border-radius: 999px;
+}
+
+/* Handle */
+.profile_content::-webkit-scrollbar-thumb {
+  background: #93342680;
+  border-radius: 999px;
+}
+
+/* Handle on hover */
+.profile_content::-webkit-scrollbar-thumb:hover {
+  background: #933426;
 }

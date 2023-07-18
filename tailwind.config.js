@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        poppins: "var(--font-krub)",
         cohaerentia: "var(--font-cohaerentia)",
         lucette: "var(--font-lucette)",
+        krub: "var(--font-krub)",
       },
     },
   },
