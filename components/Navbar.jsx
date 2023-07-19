@@ -45,9 +45,9 @@ export const Menu = ({ where }) => {
   return (
     <div className="hidden lg:flex flex-row justify-center items-center">
       <div
-        className={`flex flex-row lg:gap-8 xl:gap-28 ${
+        className={`flex flex-row lg:gap-8 xl:gap-16 2xl:gap-28 ${
           where === "notIndex" ? "text-black/40" : "text-white/70 ml-[-24px]"
-        } text-2xl ${cohaerentia.variable} font-cohaerentia`}
+        } lg:text-xl 2xl:text-2xl ${cohaerentia.variable} font-cohaerentia`}
       >
         <div
           onMouseEnter={() => toggleSubMenu("artworks")}
