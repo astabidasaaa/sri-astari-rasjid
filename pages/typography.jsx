@@ -3,10 +3,8 @@ import React from "react";
 
 const typography = () => {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between px-4 md:px-24 lg:px-40 pt-56`}
-    >
-      <div>
+    <main className="main_outer_container">
+      <div className="main_inner_container text-center">
         <h1 className={`${lucette.variable} font-lucette display-1`}>
           Font Lucette Display 1
         </h1>
@@ -83,6 +81,25 @@ const typography = () => {
         <h6 className={`${krub.variable} font-krub`}>Font krub Heading 6</h6>
         <p className={`${krub.variable} font-krub`}>Font krub Body 1</p>
         <p className={`sub-p ${krub.variable} font-krub`}>Font krub Body 2</p>
+        <span className={`text-left ${krub.variable} font-krub`}>
+          <h1>
+            <b>SEBUAH HEADING 1</b>
+          </h1>
+          <h3>INI HEADING 3</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque
+            tempore qui accusantium quod laudantium id, ipsum minus labore!
+            Aperiam.
+          </p>
+          <h5>INI HEADING 5</h5>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
+            cupiditate molestiae dicta mollitia necessitatibus repudiandae
+            numquam animi cum officiis possimus asperiores placeat natus fuga,
+            porro totam nam vero voluptatum, eos blanditiis. Impedit amet illo
+            voluptatum porro, modi quas placeat non!
+          </p>
+        </span>
       </div>
     </main>
   );

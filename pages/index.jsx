@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { FaSquareInstagram, FaSquareYoutube } from "react-icons/fa6";
 import { Menu } from "@/components/Navbar";
 

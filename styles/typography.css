@@ -10,27 +10,27 @@ h4 {
 
 h1,
 h2 {
-  @apply mb-6;
+  @apply mb-4;
 }
 
 h3,
 h4 {
-  @apply mb-4;
+  @apply mb-2;
 }
 
 h3:not(:first-child),
 h4:not(:first-child) {
-  @apply mt-8 md:mt-10;
+  @apply mt-6 md:mt-8;
 }
 
 h5,
 h6 {
-  @apply mb-4;
+  @apply mb-2;
 }
 
 h5:not(:first-child),
 h6:not(:first-child) {
-  @apply mt-8;
+  @apply mt-6;
 }
 
 ul,
@@ -65,37 +65,37 @@ h6 {
 }
 li,
 p {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .sub-p {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 @media (min-width: 768px) {
   .display-1 {
-    font-size: 54px;
-  }
-  .display-2 {
     font-size: 48px;
   }
-  h1 {
+  .display-2 {
     font-size: 42px;
   }
-  h2 {
+  h1 {
     font-size: 38px;
   }
-  h3 {
+  h2 {
     font-size: 32px;
   }
-  h4 {
+  h3 {
     font-size: 26px;
   }
-  h5 {
+  h4 {
     font-size: 24px;
   }
-  h6 {
+  h5 {
     font-size: 20px;
+  }
+  h6 {
+    font-size: 18px;
   }
   li,
   p {

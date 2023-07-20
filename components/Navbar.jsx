@@ -1,33 +1,54 @@
 import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import { BiMenu, BiX } from "react-icons/bi";
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
 import { cohaerentia, krub, lucette } from "./FontSrc";
 import MenuContext from "./MenuContext";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const router = useRouter();
+  const isIndex = router.asPath === "/";
+
   return (
-    <header className="header">
-      <div className="nav_container">
-        <nav className="nav">
-          <Link href="/" legacyBehavior>
-            <a>
-              <Image
-                id="logo-bw"
-                src="/logo-black.png"
-                alt="Logo Kemdikbud"
-                width={1237}
-                height={360}
-                className="nav_logo"
-              />
-            </a>
-          </Link>
-          <Menu where="notIndex" />
-          <NavMobile />
-        </nav>
-      </div>
-    </header>
+    <AnimatePresence initial={false} mode="wait">
+      <motion.header
+        className={`fixed top-0 right-0 left-0 z-40 bg-white transition-all duration-[2000] ${
+          isIndex
+            ? "block lg:opacity-0 lg:hidden !text-white !bg-transparent"
+            : "opacity-100"
+        } transition-all duration-[4000] delay-1000`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{
+          type: "spring",
+          duration: 1,
+        }}
+        key={isIndex ? "index-nav" : "main-nav"}
+      >
+        <div className="nav_container">
+          <nav className="nav">
+            <Link href="/" legacyBehavior>
+              <a>
+                <Image
+                  id="logo-bw"
+                  src={isIndex ? "/logo-white-short.png" : "/logo-black.png"}
+                  alt="Logo Sri Astari Rasjid"
+                  width={1237}
+                  height={360}
+                  className="nav_logo"
+                />
+              </a>
+            </Link>
+            {!isIndex && <Menu where="notIndex" />}
+            <NavMobile />
+          </nav>
+        </div>
+      </motion.header>
+    </AnimatePresence>
   );
 };
 

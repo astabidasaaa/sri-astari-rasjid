@@ -1,0 +1,119 @@
+{
+  "painting": [
+    {
+      "title": "Judul Karya",
+      "year": "2014",
+      "media": "",
+      "size": "",
+      "image_url": "artworks-placeholder.jpg",
+      "description": "",
+      "status": "",
+      "exhibited": "",
+      "exhibition_date": ""
+    },
+    {
+      "title": "Karya 13444",
+      "year": "2014",
+      "media": "",
+      "size": "",
+      "image_url": "artworks-placeholder.jpg",
+      "description": "",
+      "status": "",
+      "exhibited": "",
+      "exhibition_date": ""
+    },
+    {
+      "title": "Sebuah Jalan Menuju Semesta yang Abadi",
+      "year": "2014",
+      "media": "Mixed Media on Canvas",
+      "size": "(2x) 80 x 150 cm",
+      "image_url": "image-placeholder-2.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae reprehenderit natus consequatur expedita eveniet maxime corporis? Facere adipisci molestias deleniti illo. Suscipit nihil deserunt quia mollitia. Quaerat iure nisi quae recusandae, numquam voluptatibus commodi dignissimos minus sed aliquid id ipsum voluptatem iusto facere non esse delectus autem officiis architecto cum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt eligendi fugiat deleniti minima libero hic aut voluptate voluptatibus totam necessitatibus.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus laborum illum similique. Unde, quasi cum? Nemo rem aut possimus corrupti culpa asperiores eveniet laboriosam error, laudantium ex, fugit soluta totam distinctio tenetur nihil perspiciatis atque! Nulla odit minus quibusdam eaque.",
+      "status": "Private Studio Jakarta",
+      "exhibited": "Visual Art Exhibition, Self-Potrait, Famous Living Artists of Indonesia, Jogja Gallery (Jogja, Indonesia)",
+      "exhibition_date": "7-30 November 2008"
+    },
+    {
+      "title": "Random Judul",
+      "year": "2014",
+      "media": "",
+      "size": "",
+      "image_url": "artworks-placeholder.jpg",
+      "description": "test",
+      "status": "",
+      "exhibited": "",
+      "exhibition_date": ""
+    },
+    {
+      "title": "Relative",
+      "year": "2014",
+      "media": "",
+      "size": "",
+      "image_url": "artworks-placeholder.jpg",
+      "description": "",
+      "status": "",
+      "exhibited": "",
+      "exhibition_date": ""
+    }
+  ],
+  "sculpture": [
+    {
+      "title": "0928080938439",
+      "year": "2014",
+      "media": "",
+      "size": "",
+      "image_url": "image-placeholder-2.jpg",
+      "description": "",
+      "status": "",
+      "exhibited": "",
+      "exhibition_date": ""
+    },
+    {
+      "title": "Kenapa ini jadi judul?",
+      "year": "2014",
+      "media": "",
+      "size": "",
+      "image_url": "image-placeholder-2.jpg",
+      "description": "",
+      "status": "",
+      "exhibited": "",
+      "exhibition_date": ""
+    },
+    {
+      "title": "",
+      "year": "",
+      "media": "",
+      "size": "",
+      "image_url": "",
+      "description": "",
+      "status": "",
+      "exhibited": "",
+      "exhibition_date": ""
+    }
+  ],
+  "installation": [
+    {
+      "title": "",
+      "year": "",
+      "media": "",
+      "size": "",
+      "image_url": "",
+      "description": "",
+      "status": "",
+      "exhibited": "",
+      "exhibition_date": ""
+    },
+    {
+      "title": "",
+      "year": "",
+      "media": "",
+      "size": "",
+      "image_url": "",
+      "description": "",
+      "status": "",
+      "exhibited": "",
+      "exhibition_date": ""
+    }
+  ],
+  "donation-collection": []
+}

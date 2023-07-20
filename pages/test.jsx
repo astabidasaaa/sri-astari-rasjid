@@ -5,6 +5,26 @@ const TestPage = () => {
     <main className="main_outer_container">
       <div className="main_inner_container">
         <h1 className="drop-shadow-sm font-bold shadow-red-800">HELLO</h1>
+        <div className="relative w-[35%] max-w-[434px] h-[577px]">
+          <Image
+            src={`/artworks-placeholder.jpg`}
+            alt=""
+            // width={360}
+            // height={288}
+            fill
+            className="object-contain object-bottom min-w-full max-w-full min-h-full max-h-full"
+          />
+        </div>
+        <div className="relative w-[35%] max-w-[434px] h-[577px]">
+          <Image
+            src={`/profile-img.jpg`}
+            alt=""
+            // width={360}
+            // height={288}
+            fill
+            className="object-contain object-bottom min-w-full max-w-full min-h-full max-h-full "
+          />
+        </div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
           tempore quaerat? Ipsam quaerat voluptates consectetur hic eveniet, ad
