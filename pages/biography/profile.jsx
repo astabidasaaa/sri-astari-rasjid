@@ -1,104 +1,88 @@
 import React from "react";
 import Image from "next/image";
 import { cohaerentia, krub, lucette } from "@/components/FontSrc";
+import { NextSeo } from "next-seo";
 
-const ProfilePage = () => {
+const ProfilePage = ({ profile }) => {
+  const data = profile?.data?.attributes || null;
+  // console.log(data);
+
   return (
-    <main className="main_outer_container">
-      <div className="main_inner_container">
-        <h1 className={`display-1 ${lucette.variable} font-lucette`}>
-          Sri Astari Rasjid
-        </h1>
-        <div
-          className={`relative flex flex-col lg:flex-row justify-start items-center lg:items-start gap-8 lg:gap-16  ${krub.variable} font-krub`}
-        >
-          <Image
-            id="profile-img"
-            src="/profile-img.jpg"
-            alt="Foto Profil Sri Astari Rasjid"
-            width={392}
-            height={522}
-            className="object-contain object-center max-h-[480px]"
-          />
-          <div className="profile_content lg:max-w-2xl 2xl:max-w-4xl lg:overflow-y-scroll lg:max-h-[480px]">
-            <div className="h-max w-full lg:px-4">
-              <p>
-                Sri Astari Rasjid adalah sosok Seniman Kontemporer Indonesia dan
-                mantan Kedutaan Besar Indonesia untuk Bulgaria, Albania dan
-                Makedonia Utara sejak 2016 hingga 2020. Lahir di Jakarta pada 16
-                Maret 1953 dan meninggal dunia pada hari Minggu tanggal 11
-                Desember 2022 di Singapura pada umurnya yang ke-69 tahun. Ia
-                adalah seorang istri dari Haroen al Rasjid yang juga menjadi
-                Presiden Direktur PT Caltex Pacific Indonesia (CPI) periode
-                1977-1994 dan Presiden Komisaris PT CPI periode 1994-2003.
-              </p>
-              <p>
-                Sri Astari Rasjid juga dikenal sebagai Seniman Feminisme karena
-                umumnya Sri Astari selalu membuat karya dengan tema kehidupan
-                Perempuan Indonesia mengeksplorasi masalah serta tekanan yang
-                muncul akibat modernisasi, demokrasi, globalisasi, dan kebebasan
-                dalam kehidupan urban perkotaan dengan budaya patriarki dan
-                komunal yang mengakar dalam lingkungan perempuan Indonesia.
-                Karya-karyanya tidak hanya berupa lukisan tetapi juga patung,
-                dan seni instalasi.
-              </p>
-              <p>
-                Karya-karyanya telah ditampilkan dalam berbagai pameran penting
-                di berbagai negara antara lain Jakarta (Indonesia), Hongkong,
-                Washington, New York (Amerika Serikat), Moskow (Rusia), Madrid
-                (Spanyol), London (Inggris), Paris (Perancis), Venice Biennale
-                (Italia) dan lainnya. Beberapa kompetisi seni rupa ia telah
-                memenangi beberapa penghargaan, seperti Nokia Arts Award,
-                Phillip Morris Art Award dan Winsor and Newton Award.
-              </p>
-              <p>
-                <b>Pendidikan</b>
-              </p>
-              <ul>
-                <li>
-                  1973 Menempuh Pendidikan sastra inggris di Universtias
-                  Indonesia
-                </li>
-                <li>
-                  1975-1976 Mempelajari Fashion Design di Lucy Clayton School of
-                  Fashion di London, Inggris
-                </li>
-                <li>
-                  1987 Melanjutkan Pendidikannya dengan mempelajari lukisan
-                  diuniversitas of Minnesota, Amerika
-                </li>
-                <li>
-                  1988 Mengikuti Painting Course pada Royal College of Art di
-                  London
-                </li>
-              </ul>
-              <p>
-                <b>Penghargaan</b>
-              </p>
-              <ul>
-                <li>▪ Philip Morris Indonesian Art Awards VI (1999)</li>
-                <li>▪ Philip Morris Art Awards (2005)</li>
-                <li>▪ Bulgarian Chamber of Commerse & Industry</li>
-                <li>▪ Kartini Award dari Mitra Seni Indonesia (2015)</li>
-                <li>
-                  ▪ Dilantik menjadi Duta besar Indonesia untuk Bulgaria
-                  merangkap Albania dan Makedonia utara (2016-2020)
-                </li>
-                <li>
-                  ▪ Dr Code Fashion Award atas peran nya di KBRI Sofia,dan pada
-                </li>
-                <li>▪ Sofia Fashion World (2019)</li>
-                <li>
-                  ▪ Madara Horseman 1st Degree State Order dari Presiden
-                  Bulgaria Ruben Radev (2020)
-                </li>
-              </ul>
+    <>
+      <NextSeo
+        title="Profile"
+        description="Welcome to the official website of Sri Astari Rasjid."
+        openGraph={{
+          title: "Profile - Sri Astari Rasjid",
+          images: [
+            {
+              url: "/index-bg-4.webp",
+              width: 1920,
+              height: 1080,
+              alt: "Sri Astari Rasjid",
+              type: "image/webp",
+            },
+          ],
+        }}
+      />
+      <main className="main_outer_container">
+        <div className="main_inner_container">
+          <h1 className={`display-1 ${lucette.variable} font-lucette`}>
+            {data?.Title || "Sri Astari Rasjid"}
+          </h1>
+          <div
+            className={`relative w-full flex flex-col lg:flex-row justify-start lg:justify-between items-center lg:items-start gap-8 lg:gap-16 ${krub.variable} font-krub`}
+          >
+            {/* <div className="relative flex justify-center items-center w-full lg:w-full lg:max-w-[320px] lg:h-screen lg:max-h-[480px]"> */}
+            <Image
+              // id="profile-img"
+              src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${
+                data?.Image?.data?.attributes?.url || "/profile-img.jpg"
+              }`}
+              alt="Foto Profil Sri Astari Rasjid"
+              // width={392}
+              // height={522}
+              fill
+              className="!relative object-contain object-center lg:object-left-top !w-full !max-w-[400px] !h-[unset] !max-h-[480px]"
+            />
+            {/* </div> */}
+            <div className="profile_content lg:max-w-2xl 2xl:max-w-4xl lg:overflow-y-scroll lg:max-h-[480px]">
+              <div className="h-max w-full lg:px-4">
+                {data.Description && (
+                  <div dangerouslySetInnerHTML={{ __html: data.Description }} />
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 };
 
 export default ProfilePage;
+
+export const getStaticProps = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/profile?populate[Image][fields][0]=url`,
+    {
+      headers: {
+        Authorization: `Bearer 1980c7031fefeea162837e4cdcb9a38f39cc74907c3c8f3786572933001eeb61bdd485ea41bc53f63e26b3b52aaace462944c35171ca9ddf335c68da41e233cc8bff51032dc6ff3b120bc12e4d37dd28077e782bb4ba8c69698bc5f3b6513700ee3919edfb234cb9dfc6c64f680520a5b37afa948af0c484292af7567d4c9dd1`,
+      },
+    }
+  );
+  const data_profile = await res.json();
+
+  if (!data_profile) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      profile: data_profile,
+    },
+    revalidate: 30,
+  };
+};

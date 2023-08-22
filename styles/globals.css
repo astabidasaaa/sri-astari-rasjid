@@ -184,15 +184,15 @@ nav button:hover {
 }
 
 .catalogues_container {
-  @apply w-full flex flex-col lg:flex-row flex-wrap justify-between items-center lg:items-start gap-24 lg:gap-8 xl:gap-16;
+  @apply w-full flex flex-col lg:flex-row flex-wrap justify-between items-center lg:items-start gap-y-24 lg:gap-x-8 lg:gap-y-20 xl:gap-x-16 xl:gap-y-24;
 }
 
 .catalogues_item_container {
-  @apply basis-full lg:basis-[48%] xl:basis-[45%] flex flex-col lg:flex-row justify-start items-center lg:items-end gap-4 lg:gap-10 xl:gap-16 w-max;
+  @apply basis-full lg:basis-[48%] xl:basis-[45%] flex flex-col lg:flex-row justify-start items-center lg:items-end gap-4 lg:gap-10 xl:gap-16 w-[283px] lg:w-[170px] xl:w-[212px] 2xl:w-[283px];
 }
 
 .catalogues_item_image {
-  @apply object-cover object-center w-[283px] lg:w-[212px] xl:w-[283px] h-[400px] lg:h-[300px] xl:h-[400px];
+  @apply object-cover object-center w-[283px] lg:w-[170px] xl:w-[212px] 2xl:w-[283px] h-[400px] lg:h-[240px] xl:h-[300px] 2xl:h-[400px];
 }
 
 .catalogues_item_description {
@@ -216,7 +216,7 @@ nav button:hover {
 }
 
 .artworks_display_inner_container {
-  @apply w-max md:w-full h-max flex flex-col md:flex-row flex-wrap justify-center lg:justify-end items-center gap-12 lg:gap-4;
+  @apply w-max md:w-full h-max flex flex-col md:flex-row flex-wrap justify-center lg:justify-start items-center gap-12 lg:gap-4;
 }
 
 .artworks_item_container {

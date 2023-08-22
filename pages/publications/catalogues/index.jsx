@@ -1,116 +1,66 @@
 import React from "react";
-import Image from "next/image";
-import { cohaerentia, lucette } from "@/components/FontSrc";
+// import Image from "next/image";
+import { cohaerentia } from "@/components/FontSrc";
+import CataloguesComponent from "@/components/CataloguesComponent";
+import { NextSeo } from "next-seo";
 
-const CataloguesIndexPage = () => {
+const CataloguesIndexPage = ({ catalogues_list }) => {
   return (
-    <main className="main_outer_container">
-      <div className="main_inner_container">
-        <h5
-          className={`exhibitions_title ${cohaerentia.variable} font-cohaerentia`}
-        >
-          Catalogues
-        </h5>
-        <div className="catalogues_container">
-          {data_catalogues &&
-            data_catalogues.map((item, index) => {
-              return (
-                <div
-                  className="catalogues_item_container"
-                  key={`catalogues-${index}`}
-                >
-                  {item.image_url && (
-                    <Image
-                      src={`/${item.image_url}`}
-                      alt={item.title}
-                      width={283}
-                      height={400}
-                      className="catalogues_item_image"
-                    />
-                  )}
-                  <div className="catalogues_item_description">
-                    {item.title && (
-                      <h5
-                        className={`${lucette.variable} font-lucette !mt-0 lg:!mb-24 text-center lg:text-left`}
-                      >
-                        {item.title}
-                      </h5>
-                    )}
-                    <p
-                      className={`${cohaerentia.variable} font-cohaerentia text-center lg:text-left !mb-0`}
-                    >
-                      {item.publisher}
-                    </p>
-                    <p
-                      className={`${cohaerentia.variable} font-cohaerentia text-center lg:text-left !mb-0`}
-                    >
-                      {item.year}
-                    </p>
-                    <p
-                      className={`${cohaerentia.variable} font-cohaerentia text-center lg:text-left !mb-0`}
-                    >
-                      {item.isbn}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+    <>
+      <NextSeo
+        title="Catalogues"
+        description="Welcome to the official website of Sri Astari Rasjid."
+        openGraph={{
+          title: "Catalogues - Sri Astari Rasjid",
+          images: [
+            {
+              url: "/index-bg-4.webp",
+              width: 1920,
+              height: 1080,
+              alt: "Sri Astari Rasjid",
+              type: "image/webp",
+            },
+          ],
+        }}
+      />
+      <main className="main_outer_container">
+        <div className="main_inner_container">
+          <h5
+            className={`exhibitions_title ${cohaerentia.variable} font-cohaerentia`}
+          >
+            Catalogues
+          </h5>
+          {catalogues_list && (
+            <CataloguesComponent section_list={catalogues_list} />
+          )}
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 };
 
 export default CataloguesIndexPage;
 
-const data_catalogues = [
-  {
-    title: "Catalogue Title",
-    image_url: "publications-placeholder.png",
-    publisher: "Penerbit ABC",
-    year: "2021",
-    isbn: "ISBN 978-602-8519-93-9",
-  },
-  {
-    title: "Catalogue Title",
-    image_url: "profile-img.jpg",
-    publisher: "Penerbit ABC",
-    year: "2021",
-    isbn: "ISBN 978-602-8519-93-9",
-  },
-  {
-    title: "Catalogue Title",
-    image_url: "publications-placeholder.png",
-    publisher: "Penerbit ABC",
-    year: "2021",
-    isbn: "ISBN 978-602-8519-93-9",
-  },
-  {
-    title: "Catalogue Title",
-    image_url: "publications-placeholder.png",
-    publisher: "Penerbit ABC",
-    year: "2021",
-    isbn: "ISBN 978-602-8519-93-9",
-  },
-  {
-    title: "Catalogue Title",
-    image_url: "publications-placeholder.png",
-    publisher: "Penerbit ABC",
-    year: "2021",
-    isbn: "ISBN 978-602-8519-93-9",
-  },
-  {
-    title: "Catalogue Title",
-    image_url: "publications-placeholder.png",
-    publisher: "Penerbit ABC",
-    year: "2021",
-    isbn: "ISBN 978-602-8519-93-9",
-  },
-  {
-    title: "Catalogue Title",
-    image_url: "group-exhibitions-2.jpg",
-    publisher: "Penerbit ABC",
-    year: "2021",
-    isbn: "ISBN 978-602-8519-93-9",
-  },
-];
+export async function getServerSideProps() {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/catalogues?populate[Image][fields][0]=url`,
+      {
+        headers: {
+          Authorization: `Bearer 1980c7031fefeea162837e4cdcb9a38f39cc74907c3c8f3786572933001eeb61bdd485ea41bc53f63e26b3b52aaace462944c35171ca9ddf335c68da41e233cc8bff51032dc6ff3b120bc12e4d37dd28077e782bb4ba8c69698bc5f3b6513700ee3919edfb234cb9dfc6c64f680520a5b37afa948af0c484292af7567d4c9dd1`,
+        },
+      }
+    );
+
+    const data_catalogues = await res.json();
+
+    return {
+      props: {
+        catalogues_list: data_catalogues.data,
+      },
+    };
+  } catch (error) {
+    console.error("ERROR:", error);
+    return {};
+  }
+}

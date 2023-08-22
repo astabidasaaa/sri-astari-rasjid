@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
+import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
 import { RxCross1, RxChevronRight, RxChevronLeft } from "react-icons/rx";
 import { FaSquareInstagram, FaSquareYoutube } from "react-icons/fa6";
 import MenuContext from "./MenuContext";
@@ -41,18 +42,39 @@ const MenuMobile = () => {
         <div
           className={`h-20 md:h-40 lg:h-48 flex flex-row justify-between items-center`}
         >
-          {subMenu === "main-menu" ? (
-            <button className="text-3xl text-white" onClick={toggleNav}>
-              <RxCross1 key="menu-close" />
-            </button>
-          ) : (
-            <button
-              className="text-3xl text-white"
-              onClick={() => toggleSubMenu("main-menu")}
-            >
-              <RxChevronLeft key="sub-menu-open" />
-            </button>
-          )}
+          <AnimatePresence initial={false} mode="wait">
+            {subMenu === "main-menu" ? (
+              <motion.button
+                className="text-3xl text-white"
+                onClick={toggleNav}
+                initial={{ opacity: 0, rotate: -360 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 360 }}
+                transition={{
+                  type: "tween",
+                  duration: 0.3,
+                }}
+                key="close-btn"
+              >
+                <RxCross1 key="menu-close" />
+              </motion.button>
+            ) : (
+              <motion.button
+                className="text-3xl text-white"
+                onClick={() => toggleSubMenu("main-menu")}
+                initial={{ opacity: 0, rotate: -360 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 360 }}
+                transition={{
+                  type: "tween",
+                  duration: 0.3,
+                }}
+                key="back-btn"
+              >
+                <RxChevronLeft key="sub-menu-open" />
+              </motion.button>
+            )}
+          </AnimatePresence>
         </div>
         <MenuChanger subMenu={subMenu} toggleSubMenu={toggleSubMenu} />
         <div className="absolute bottom-64 flex flex-row justify-center items-center gap-2 text-4xl">
@@ -83,19 +105,30 @@ export default MenuMobile;
 // };
 
 const MenuChanger = ({ toggleSubMenu, subMenu }) => {
-  if (subMenu === "main-menu") {
-    return <MainMenu toggleSubMenu={toggleSubMenu} />;
-  }
-
-  if (subMenu === "artworks") {
-    return <ArtworksMenu />;
-  }
-  if (subMenu === "biography") {
-    return <BiographyMenu />;
-  }
-  if (subMenu === "publications") {
-    return <PublicationsMenu />;
-  }
+  return (
+    <>
+      <AnimatePresence initial={false} mode="wait">
+        <motion.div
+          className="mobile_menu_container"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            type: "spring",
+            duration: 0.3,
+          }}
+          key={subMenu}
+        >
+          {subMenu === "main-menu" && (
+            <MainMenu toggleSubMenu={toggleSubMenu} />
+          )}
+          {subMenu === "artworks-menu" && <ArtworksMenu />}
+          {subMenu === "biography-menu" && <BiographyMenu />}
+          {subMenu === "publications-menu" && <PublicationsMenu />}
+        </motion.div>
+      </AnimatePresence>
+    </>
+  );
 };
 
 export const SubMenuBtn = ({ toggleSubMenu, children, subMenu }) => {
@@ -130,23 +163,23 @@ export const SubMenuLinkMobile = ({ href, children }) => {
 
 const MainMenu = ({ toggleSubMenu }) => {
   return (
-    <div className="mobile_menu_container" key="main-menu">
-      <SubMenuBtn toggleSubMenu={toggleSubMenu} subMenu="artworks">
+    <>
+      <SubMenuBtn toggleSubMenu={toggleSubMenu} subMenu="artworks-menu">
         Artworks
       </SubMenuBtn>
-      <SubMenuBtn toggleSubMenu={toggleSubMenu} subMenu="biography">
+      <SubMenuBtn toggleSubMenu={toggleSubMenu} subMenu="biography-menu">
         Biography
       </SubMenuBtn>
-      <SubMenuBtn toggleSubMenu={toggleSubMenu} subMenu="publications">
+      <SubMenuBtn toggleSubMenu={toggleSubMenu} subMenu="publications-menu">
         Publications
       </SubMenuBtn>
-    </div>
+    </>
   );
 };
 
 const ArtworksMenu = () => {
   return (
-    <div className="mobile_menu_container" key="artworks-menu">
+    <>
       <SubMenuLinkMobile href="/artworks/painting">Painting</SubMenuLinkMobile>
       <SubMenuLinkMobile href="/artworks/sculpture">
         Sculpture
@@ -157,13 +190,13 @@ const ArtworksMenu = () => {
       <SubMenuLinkMobile href="/artworks/donation-collection">
         Donation Collection
       </SubMenuLinkMobile>
-    </div>
+    </>
   );
 };
 
 const BiographyMenu = () => {
   return (
-    <div className="mobile_menu_container" key="biography-menu">
+    <>
       <SubMenuLinkMobile href="/biography/profile">Profile</SubMenuLinkMobile>
       <SubMenuLinkMobile href="/biography/solo-exhibitions">
         Solo Exhibitions
@@ -171,13 +204,13 @@ const BiographyMenu = () => {
       <SubMenuLinkMobile href="/biography/group-exhibitions">
         Group Exhibitions
       </SubMenuLinkMobile>
-    </div>
+    </>
   );
 };
 
 const PublicationsMenu = () => {
   return (
-    <div className="mobile_menu_container" key="publications-menu">
+    <>
       <SubMenuLinkMobile href="/publications/catalogues">
         Catalogues
       </SubMenuLinkMobile>
@@ -188,6 +221,6 @@ const PublicationsMenu = () => {
       <SubMenuLinkMobile href="/publications/archives">
         Archives
       </SubMenuLinkMobile>
-    </div>
+    </>
   );
 };

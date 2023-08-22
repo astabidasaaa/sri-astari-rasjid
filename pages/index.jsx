@@ -1,45 +1,97 @@
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { FaSquareInstagram, FaSquareYoutube } from "react-icons/fa6";
 import { Menu } from "@/components/Navbar";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/effect-fade";
+import { EffectFade, Autoplay } from "swiper/modules";
+import { NextSeo } from "next-seo";
 
 const IndexPage = () => {
   return (
     <>
-      <Image
-        id="index-background"
-        src="/index-cropped-mobile.webp"
-        alt="Background Home Page"
-        // width={1920}
-        // height={1080}
-        // quality={100}
-        fill
-        priority
-        className="block sm:hidden object-cover object-center h-screen"
+      <NextSeo
+        title="Home"
+        description="Welcome to the official website of Sri Astari Rasjid."
+        openGraph={{
+          title: "Home - Sri Astari Rasjid",
+          images: [
+            {
+              url: "/index-bg-4.webp",
+              width: 1920,
+              height: 1080,
+              alt: "Sri Astari Rasjid",
+              type: "image/webp",
+            },
+          ],
+        }}
       />
-      <Image
-        id="index-background"
-        src="/index-cropped-tablet.webp"
-        alt="Background Home Page"
-        // width={1920}
-        // height={1080}
-        // quality={100}
-        fill
-        priority
-        className="hidden sm:block lg:hidden object-cover object-center h-screen"
-      />
-      <Image
-        id="index-background"
-        src="/index-cropped-desktop.webp"
-        alt="Background Home Page"
-        // width={1920}
-        // height={1080}
-        // quality={100}
-        fill
-        priority
-        className="hidden lg:block object-cover object-[42%_center] h-screen"
-      />
+      <Swiper
+        spaceBetween={0}
+        effect={"fade"}
+        navigation={false}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: false,
+        }}
+        grabCursor={false}
+        loop={true}
+        speed={2000}
+        // pagination={{
+        //   clickable: true,
+        // }}
+        modules={[Autoplay, EffectFade]}
+        className="mySwiper h-screen w-screen !z-0"
+      >
+        <SwiperSlide>
+          <Image
+            src={"/index-cropped-desktop.webp"}
+            alt={`Image`}
+            fill
+            unoptimized
+            quality={100}
+            priority={true}
+            className="object-cover object-[42%_center] h-screen"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
+            src={"/index-bg-2.webp"}
+            alt={`Image`}
+            fill
+            unoptimized
+            quality={100}
+            priority={true}
+            className="object-cover object-center h-screen"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
+            src={"/index-bg-3.webp"}
+            alt={`Image`}
+            fill
+            unoptimized
+            quality={100}
+            priority={true}
+            className="object-cover object-[20%_center] h-screen"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
+            src={"/index-bg-4.webp"}
+            alt={`Image`}
+            fill
+            unoptimized
+            quality={100}
+            priority={true}
+            className="object-cover object-center h-screen"
+          />
+        </SwiperSlide>
+      </Swiper>
+
       <main className="index_outer_container">
         <div className="index_inner_container">
           <div className="index_content">
@@ -76,3 +128,39 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+// {
+//   /* <Image
+//         id="index-background"
+//         src="/index-cropped-mobile.webp"
+//         alt="Background Home Page"
+//         // width={1920}
+//         // height={1080}
+//         // quality={100}
+//         fill
+//         priority
+//         className="block sm:hidden object-cover object-center h-screen"
+//       />
+//       <Image
+//         id="index-background"
+//         src="/index-cropped-tablet.webp"
+//         alt="Background Home Page"
+//         // width={1920}
+//         // height={1080}
+//         // quality={100}
+//         fill
+//         priority
+//         className="hidden sm:block lg:hidden object-cover object-center h-screen"
+//       />
+//       <Image
+//         id="index-background"
+//         src="/index-cropped-desktop.webp"
+//         alt="Background Home Page"
+//         // width={1920}
+//         // height={1080}
+//         // quality={100}
+//         fill
+//         priority
+//         className="hidden lg:block object-cover object-[42%_center] h-screen"
+//       /> */
+// }

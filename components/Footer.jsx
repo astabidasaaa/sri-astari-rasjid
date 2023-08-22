@@ -33,7 +33,7 @@ const Footer = () => {
               Sri Astari Rasjid Official Site | Developed by Humanika Creative
               Design
             </span>
-            <div className="flex flex-row justify-center items-center gap-2 text-4xl order-1 lg:order-2 lg:text-[#933426]">
+            <div className="flex flex-row justify-center items-center gap-2 text-4xl order-1 lg:order-2 lg:text-[#933426] text-4xl">
               <a
                 href="https://www.instagram.com/"
                 target="_blank"

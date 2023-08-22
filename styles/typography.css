@@ -36,7 +36,17 @@ h6:not(:first-child) {
 ul,
 p,
 .sub-p {
-  @apply mb-4 text-justify whitespace-pre-wrap;
+  @apply mb-4 whitespace-pre-wrap;
+}
+
+/* 
+p,
+.sub-p {
+  @apply text-justify;
+} */
+
+ul {
+  @apply list-inside;
 }
 
 .display-1 {
