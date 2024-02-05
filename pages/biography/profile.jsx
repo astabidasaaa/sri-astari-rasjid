@@ -67,7 +67,7 @@ export const getStaticProps = async () => {
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/profile?populate[Image][fields][0]=url`,
     {
       headers: {
-        Authorization: `Bearer 1980c7031fefeea162837e4cdcb9a38f39cc74907c3c8f3786572933001eeb61bdd485ea41bc53f63e26b3b52aaace462944c35171ca9ddf335c68da41e233cc8bff51032dc6ff3b120bc12e4d37dd28077e782bb4ba8c69698bc5f3b6513700ee3919edfb234cb9dfc6c64f680520a5b37afa948af0c484292af7567d4c9dd1`,
+        Authorization: process.env.TOKEN_SECRET,
       },
     }
   );
